@@ -1,21 +1,94 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Redirecting...</title>
-  <script>
-    // Ambil parameter nama jika ada
-    const urlParams = new URLSearchParams(window.location.search);
-    const nama = urlParams.get('to');
-    
-    // Alihkan langsung ke Google Sites
-    let destination = "https://sites.google.com/view/wedding-siti-lengki/undangan-digital";
-    
-    // Redirect otomatis
-    window.location.href = destination;
-  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Wedding of Siti & Lengki</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      background-color: #fdfbf7;
+      color: #333;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .card {
+      width: 100%;
+      max-width: 480px;
+      background: #ffffff;
+      padding: 40px 25px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      border: 1px solid #f0e6d2;
+    }
+    h1 {
+      font-size: 2.2rem;
+      color: #5c4033;
+      margin: 15px 0;
+    }
+    p {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .guest-box {
+      background: #faf6ee;
+      border: 1px dashed #d4c39c;
+      padding: 16px;
+      border-radius: 10px;
+      margin: 25px 0;
+    }
+    .guest-name {
+      font-weight: bold;
+      color: #8b5a2b;
+      font-size: 1.3em;
+      margin-top: 6px;
+    }
+    .date {
+      font-weight: 600;
+      color: #444;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-  <p style="text-align:center; margin-top:50px;">Mengarahkan ke undangan digital...</p>
+
+  <div class="card">
+    <p>Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i:</p>
+    
+    <div class="guest-box">
+      <small>Kepada Yth:</small>
+      <h2 id="nama-tamu" class="guest-name">Tamu Undangan</h2>
+    </div>
+
+    <p>Untuk menghadiri acara pernikahan kami:</p>
+    <h1>Siti & Lengki</h1>
+    
+    <p class="date">Minggu, 12 Desember 2026</p>
+  </div>
+
+  <script>
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const nama = urlParams.get('to');
+
+      if (nama) {
+        const decodedName = decodeURIComponent(nama.replace(/\+/g, ' '));
+        document.getElementById('nama-tamu').innerText = decodedName;
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  </script>
+
 </body>
 </html>
